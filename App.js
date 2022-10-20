@@ -1,18 +1,10 @@
-import {StyleSheet, View} from 'react-native';
 import Clubs from "./components/Clubs";
+import {Provider as PaperProvider} from "react-native-paper";
 
 const App = () => {
-    return (
-        <View style={styles.container}>
-            <Clubs/>
-        </View>
-    );
-}
+    return (<PaperProvider>
+        <Clubs/>
+    </PaperProvider>);
+};
 
 export default App;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center',
-    },
-});
