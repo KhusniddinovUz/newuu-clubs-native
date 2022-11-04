@@ -3,7 +3,8 @@ import {StyleSheet, View} from "react-native";
 import axios from "axios";
 import {List} from 'react-native-paper';
 
-const Clubs = () => {
+const Clubs = (props) => {
+    const {navigation} = props;
     const [clubs, setClubs] = useState([]);
     const [err, setErr] = useState();
     useEffect(() => {
@@ -17,7 +18,9 @@ const Clubs = () => {
 
     return (<View style={styles.wrapper}>
         <View style={styles.container}>
-            {clubs.map((club) => <List.Item style={styles.list} key={club["id"]} title={club["club_name"]}/>)}
+            {clubs && clubs.map((club) => <List.Item onPress={() => navigation.navigate('Club', {"club": club})}
+                                                     style={styles.list}
+                                                     key={club["id"]} title={club["club_name"]}/>)}
         </View>
     </View>)
 };
@@ -25,11 +28,9 @@ const Clubs = () => {
 const styles = StyleSheet.create({
     wrapper: {
         padding: 30,
-    },
-    container: {
+    }, container: {
         marginTop: 100,
-    },
-    list: {
+    }, list: {
         width: "100%",
         marginTop: 20,
         padding: 10,
