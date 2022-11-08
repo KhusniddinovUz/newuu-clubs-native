@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
-import axios from "axios";
+import {useDispatch} from "react-redux";
+import {register} from "../redux/actions/auth";
 
 
 const Register = () => {
@@ -8,16 +9,11 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [groupNumber, setGroupNumber] = useState("");
     const [email, setEmail] = useState("");
+    const dispatch = useDispatch();
 
     const registerHandler = () => {
-        console.log(username, email, password, groupNumber);
-        axios.post('https://newuuclubs.herokuapp.com/api/auth/register/',
-            {"username": username, "email": email, "group_number": groupNumber, "password": password}).then(data => {
-            console.log(data.data);
-        }).catch(e => {
-            console.log(e.error)
-        })
-    }
+        dispatch(register({username, password, email, 'group_number': groupNumber}))
+    };
 
     return (<View>
         <Text>Register Page</Text>

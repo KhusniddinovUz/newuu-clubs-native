@@ -3,18 +3,14 @@ import {
 } from "../actions/types";
 
 const initialState = {
-    isAuthenticated: false,
-    token: null,
-    username: null,
-    email: null,
-    id: null,
-    group_number: null,
+    isAuthenticated: false, token: null, username: null, email: null, id: null, group_number: null,
 };
 
 const auth = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
+            console.log(action.payload);
             return {
                 isAuthenticated: true,
                 token: action.payload.token,
