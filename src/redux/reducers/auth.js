@@ -10,7 +10,6 @@ const auth = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
-            console.log(action.payload);
             return {
                 isAuthenticated: true,
                 token: action.payload.token,

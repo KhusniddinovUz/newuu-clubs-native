@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavigationContainer} from "@react-navigation/native";
+import {NavigationContainer, DefaultTheme} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import Clubs from "../screens/Clubs";
 import Club from "../screens/Club";
@@ -8,9 +8,19 @@ import Register from "../screens/Register";
 
 const Stack = createStackNavigator();
 
+const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        background: '#fff',
+    }
+}
+
 const MainStackNavigator = () => {
-    return (<NavigationContainer>
-        <Stack.Navigator initialRouteName='Register'>
+    return (<NavigationContainer theme={MyTheme}>
+        <Stack.Navigator initialRouteName='Register' screenOptions={{
+            headerShown: false,
+        }}>
             <Stack.Screen name='Clubs' component={Clubs}/>
             <Stack.Screen name='Club' component={Club}/>
             <Stack.Screen name='Login' component={Login}/>

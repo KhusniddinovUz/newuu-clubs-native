@@ -14,6 +14,7 @@ const Club = (props) => {
 const styles = StyleSheet.create({
     container: {
         display: "flex",
+        marginTop: 100,
     },
     center: {
         textAlign: "center"
